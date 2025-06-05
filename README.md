@@ -1,2 +1,2 @@
-# .github
-The root public landing page for Naftiko GitHub organization.
+# Naftiko
+We are just getting started.
