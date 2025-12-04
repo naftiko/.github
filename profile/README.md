@@ -9,7 +9,7 @@ As of December 1st, we are beginning to build the following open-source solution
 
 Our intent is to provide this open-source core, while commercializing the fabric that surrounds it:
 
-- Fabric - The control plane for dashboards, observability, routing, and developer experience. All powered by open standards.
+- **Fabric** - The control plane for dashboards, observability, routing, and developer experience. All powered by open standards.
 
 We are just getting started, and our GitHub organization is the launch pad. We will begin rolling out artifacts and code for you to get your hands on in the beginning of January 2026, but we'd love to get the conversations started today, and work to develop Naftiko out in the open as part of the community ecosystem already in motion around Linux, CNCF, and Apache foundations.
 
