@@ -3,9 +3,9 @@ Naftiko gives platform and integration teams a governed foundation to build, run
 
 As of December 1st, we are beginning to build the following open-source solutions:
 
-- s**Capabilities** - Machine-readable, standards-based, YAML or JSON artifacts that allow you to declaratively deliver integrations.
-- s**Frameworks** - Create, test, and package capabilities into Docker images. Model-driven, IDE-native, and built for AI-assisted development.
-- s**Engines** - Executes integrations, enforces policy compliance, and ensures reliability with safeguards built in.
+- **Capabilities** - Machine-readable, standards-based, YAML or JSON artifacts that allow you to declaratively deliver integrations.
+- **Frameworks** - Create, test, and package capabilities into Docker images. Model-driven, IDE-native, and built for AI-assisted development.
+- **Engines** - Executes integrations, enforces policy compliance, and ensures reliability with safeguards built in.
 
 Our intent is to provide this open-source core, while commercializing the fabric that surrounds it:
 
