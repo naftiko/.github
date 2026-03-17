@@ -1,13 +1,55 @@
 # Naftiko
-Naftiko gives platform and integration teams a governed foundation to build, run, and evolve integrations that actually scale without the brittle glue code. We are currently building an open-source core that allows enterprises to define and deploy integrations around declarative, standards-based, and business aligned capabilities.
 
-As of December 1st, we are beginning to build the following open-source solutions:
+**Naftiko turns your existing data & APIs into a governed capability fabric for context engineering and agent orchestration.**
 
-- **Capabilities** - Machine-readable, standards-based, YAML or JSON artifacts that allow you to declaratively deliver integrations.
-- **Frameworks** - Create, test, and package capabilities into Docker images. Model-driven, IDE-native, and built for AI-assisted development.
-- **Fabric** - The control plane for dashboards, observability, routing, and developer experience. All powered by open standards.
+You don't replace APIs. You don't rip-and-rebuild for AI. You take stock of what already exists, organize it, and make it usable by humans *and* machines across business domains in repeatable ways.
 
-We are just getting started, and our GitHub organization is the launch pad. We will begin rolling out artifacts and code for you to get your hands on in the beginning of January 2026, but we'd love to get the conversations started today, and work to develop Naftiko out in the open as part of the community ecosystem already in motion around Linux, CNCF, and Apache foundations.
+## The Problem
 
-## Contribute
-You can give involved by visiting us on [LinkedIn](https://www.linkedin.com/company/naftiko/), or [joining in and starting new discussions on our public forum](https://github.com/orgs/naftiko/discussions), and if you have private questions, please email us at contact@naftiko.io.
+- APIs are everywhere, but not always being used
+- Specs exist, but no shared meaning
+- MCP servers popping up in ad hoc ways
+- Copilots and agents lack the context they need
+- Leadership mandates AI, teams are absorbing the risk
+
+## What Naftiko Does
+
+- APIs, data, and tools grouped as **capabilities** — the right-sized unit of reuse for spec-driven integration
+- Capabilities are declared using YAML, configuring the Naftiko Engine provided as a Docker container
+- Converts data formats like Protocol Buffer, XML, YAML, CSV, and Avro into JSON for better context engineering
+- MCP servers and Agent Skills are standardized, discoverable, and governed
+- Agents operate within policy, cost, and trust boundaries
+
+## Naftiko Framework
+
+[Naftiko Framework](https://github.com/naftiko/framework) is the first open-source project for Spec-Driven AI Integration. Developers only need to know YAML, JSONPath, and Mustache templates to define capabilities — no Java or other code required unless extending the framework itself.
+
+- [Specification](https://github.com/naftiko/framework/wiki/Specification)
+- [Roadmap](https://github.com/naftiko/framework/wiki/Roadmap)
+
+### Quick Start
+
+```bash
+docker pull ghcr.io/naftiko/framework:v0.4
+docker run -p 8081:8081 -v /path/to/capability.yaml:/app/capability.yaml ghcr.io/naftiko/framework:v0.4 /app/capability.yaml
+```
+
+Follow the [Tutorial](https://github.com/naftiko/framework/wiki/Tutorial) to build your first capability.
+
+## Why Naftiko
+
+- **Maximize Existing Investments** — Your data and APIs are not technical debt, they are your strategic inventory
+- **Capabilities, Not Just Endpoints** — AI doesn't need endpoints, it needs capabilities that are spec-driven
+- **Governed AI Integration at Scale** — AI integration without governance doesn't scale and doesn't survive
+- **Meet Teams Where They Are** — Reusability shows up in IDEs, governance is seamless as guidance
+
+## Get Involved
+
+- [Website](https://naftiko.io/)
+- [Blog](https://naftiko.io/resources)
+- [LinkedIn](https://www.linkedin.com/company/naftiko/)
+- [YouTube](https://www.youtube.com/@Naftiko)
+- [Bluesky](https://bsky.app/profile/naftiko.bsky.social)
+- [Discussions](https://github.com/orgs/naftiko/discussions)
+- [Newsletter](https://naftiko.io/newsletter)
+- [Contact Us](https://naftiko.io/contact-us)
