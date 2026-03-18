@@ -22,7 +22,7 @@ You don't replace APIs. You don't rip-and-rebuild for AI. You take stock of what
 
 ## Naftiko Framework
 
-[Naftiko Framework](https://github.com/naftiko/framework) is the first open-source project for Spec-Driven AI Integration. Developers only need to know YAML, JSONPath, and Mustache templates to define capabilities — no Java or other code required unless extending the framework itself.
+[Naftiko Framework](https://github.com/naftiko/framework) is the first open-source project for Spec-Driven Integration. Developers only need to know YAML, JSONPath, and Mustache templates to define capabilities — no Java or other code required unless extending the framework itself.
 
 - [Specification](https://github.com/naftiko/framework/wiki/Specification)
 - [Roadmap](https://github.com/naftiko/framework/wiki/Roadmap)
@@ -30,8 +30,8 @@ You don't replace APIs. You don't rip-and-rebuild for AI. You take stock of what
 ### Quick Start
 
 ```bash
-docker pull ghcr.io/naftiko/framework:v0.4
-docker run -p 8081:8081 -v /path/to/capability.yaml:/app/capability.yaml ghcr.io/naftiko/framework:v0.4 /app/capability.yaml
+docker pull ghcr.io/naftiko/framework:v0.5
+docker run -p 8081:8081 -v /path/to/capability.yaml:/app/capability.yaml ghcr.io/naftiko/framework:v0.5 /app/capability.yaml
 ```
 
 Follow the [Tutorial](https://github.com/naftiko/framework/wiki/Tutorial) to build your first capability.
