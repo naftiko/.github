@@ -37,21 +37,7 @@ You don't replace APIs. You don't rip-and-rebuild for AI. You take stock of what
 | Docker Native | Ships as a ready-to-run **Docker** container |
 | Extensible | Open-source core extensible with new protocols and adapters |
 
-### Quick Start
-
-```bash
-docker pull ghcr.io/naftiko/framework:v0.5
-docker run -p 8081:8081 -v /path/to/capability.yaml:/app/capability.yaml ghcr.io/naftiko/framework:v0.5 /app/capability.yaml
-```
-
-Follow the [Tutorial](https://github.com/naftiko/framework/wiki/Tutorial) to build your first capability.
-
-- [Installation](https://github.com/naftiko/framework/wiki/Installation)
-- [Specification](https://github.com/naftiko/framework/wiki/Specification)
-- [Use Cases](https://github.com/naftiko/framework/wiki/Use-Cases)
-- [Releases](https://github.com/naftiko/framework/wiki/Releases)
-- [Roadmap](https://github.com/naftiko/framework/wiki/Roadmap)
-- [FAQ](https://github.com/naftiko/framework/wiki/FAQ)
+Learn more in the [Naftiko Framework Wiki](https://github.com/naftiko/framework/wiki).
 
 ## Naftiko Fleet
 
@@ -60,6 +46,8 @@ Follow the [Tutorial](https://github.com/naftiko/framework/wiki/Tutorial) to bui
 - **Naftiko Framework** — The core open-source technology to create and run capabilities
 - **VS Code Extension** — A [Naftiko extension for VS Code](https://github.com/naftiko/fleet/wiki/VS-Code-usage) to help you edit Naftiko files
 - **Backstage Templates** — [Backstage integrated templates](https://github.com/naftiko/fleet/wiki/Backstage-usage) via Docker for creating new projects, services, or resources from pre-defined templates
+
+Learn more in the [Naftiko Fleet Wiki](https://github.com/naftiko/fleet/wiki).
 
 ## Why Naftiko
 
