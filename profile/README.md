@@ -44,8 +44,8 @@ Learn more in the [Naftiko Framework Wiki](https://github.com/naftiko/framework/
 [Naftiko Fleet](https://github.com/naftiko/fleet) is the leading product for Spec-Driven Integration, available as a Community Edition with upcoming Standard and Enterprise editions.
 
 - **Naftiko Framework** — The core open-source technology to create and run capabilities
-- **VS Code Extension** — A [Naftiko extension for VS Code](https://github.com/naftiko/fleet/wiki/VS-Code-usage) to help you edit Naftiko files
-- **Backstage Templates** — [Backstage integrated templates](https://github.com/naftiko/fleet/wiki/Backstage-usage) via Docker for creating new projects, services, or resources from pre-defined templates
+- **Naftiko Extension for VS Code** — A [Naftiko extension for VS Code](https://github.com/naftiko/fleet/wiki/Naftiko-Extension-for-VS-Code) to help you edit Naftiko files
+- **Naftiko Templates for Backstage** — [Backstage integrated templates](https://github.com/naftiko/fleet/wiki/Naftiko-Templates-for-Backstage) via Docker for creating new projects, services, or resources from pre-defined templates
 
 Learn more in the [Naftiko Fleet Wiki](https://github.com/naftiko/fleet/wiki).
 
