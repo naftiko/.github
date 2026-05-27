@@ -69,7 +69,7 @@ Each track answers one of the four pains: **API sprawl**, **AI agents drifting /
 
 The editions are **layered, not exclusive** — anything authored in Community runs unchanged in Standard or Enterprise. Capability YAML, rulesets, and policies are forward-compatible.
 
-## Naftiko Signals — The Open Intelligence Layer
+## Naftiko Signals — The Intelligence Layer
 
 [**Naftiko Signals**](https://signals.naftiko.io) is the open intelligence platform that reads the public footprint of every enterprise — public job postings, press releases, newsroom content, and open-source activity — into a structured signal corpus that maps how the Fortune 1000 is investing across AI, APIs, cloud, integration, governance, and operations.
 
@@ -92,17 +92,11 @@ The full plan is public: [Framework Roadmap](https://github.com/naftiko/framewor
 ## Get Involved
 
 - **Website** — [naftiko.io](https://naftiko.io/)
-- **Shipyard (docs)** — [shipyard.naftiko.io](https://shipyard.naftiko.io)
 - **Blog** — [naftiko.io/blog](https://naftiko.io/blog/)
 - **Discussions** — [github.com/orgs/naftiko/discussions](https://github.com/orgs/naftiko/discussions)
 - **Newsletter** — [naftiko.io/newsletter](https://naftiko.io/newsletter)
 - **LinkedIn** — [linkedin.com/company/naftiko](https://www.linkedin.com/company/naftiko/)
 - **YouTube** — [youtube.com/@Naftiko](https://www.youtube.com/@Naftiko)
-- **Bluesky** — [bsky.app/profile/naftiko.bsky.social](https://bsky.app/profile/naftiko.bsky.social)
-- **Substack (Signals)** — [naftiko.substack.com](https://naftiko.substack.com/)
-- **Podcast (Apple)** — [Naftiko Capabilities](https://podcasts.apple.com/us/podcast/nafitko-capabilities/id1866740641)
-- **Podcast (Spotify)** — [open.spotify.com/show/595bB8JdW35Qv7Yn6JFmF4](https://open.spotify.com/show/595bB8JdW35Qv7Yn6JFmF4)
-- **Capabilities Org** — [github.com/naftiko-capabilities](https://github.com/naftiko-capabilities)
 - **Contact** — [naftiko.io/contact-us](https://naftiko.io/contact-us)
 
 Naftiko operates from Paris and New York City.
