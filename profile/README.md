@@ -20,16 +20,16 @@ You don't replace your APIs. You don't rip-and-rebuild for AI. You take stock of
 - Agent Skills seem like the solution, without fully knowing why
 - Leadership mandates AI, teams are absorbing the risk
 
-## The Naftiko Fleet — Six Named Components, All at v1.0.0-alpha3
+## The Naftiko Fleet — Six Components, All at v1.0.0-alpha3
 
 | Component | Purpose | License |
 |---|---|---|
 | **[Shipyard](https://github.com/naftiko/shipyard)** | Documentation hub — soon a hosted Playground and AI-assisted Ask Navi search across the whole corpus | OSS docs |
 | **[Ikanos](https://github.com/naftiko/ikanos)** | The OSS capability engine — runs a Naftiko spec as a multi-protocol server | **Apache 2.0** |
 | **[Polychro](https://github.com/naftiko/polychro)** | The OSS deterministic AI-era linter for YAML, JSON, and Markdown specs | **Apache 2.0** |
-| **Crafter** | The capability builder for VS Code and most AI IDEs — visual + spec-driven authoring (the new Spectral for SDI) | Fleet edition |
-| **Warden** | Capability governance and policy enforcement for Backstage | Fleet edition |
-| **Skipper** | Fleet-wide orchestration for Kubernetes — teams, regions, compliance domains | Fleet edition |
+| **[Crafter](https://shipyard.naftiko.io/docs/1.0.0-alpha3/fleet/crafter/)** | The capability builder for VS Code and most AI IDEs — visual + spec-driven authoring (the new Spectral for SDI) | Fleet edition |
+| **[Warden](https://shipyard.naftiko.io/docs/1.0.0-alpha3/fleet/warden/)** | Capability governance and policy enforcement for Backstage | Fleet edition |
+| **[Skipper](https://shipyard.naftiko.io/docs/1.0.0-alpha3/fleet/skipper/)** | Fleet-wide orchestration for Kubernetes — teams, regions, compliance domains | Fleet edition |
 
 **Ikanos and Polychro are committed to staying 100% Apache 2.0 in every edition of the Fleet.**
 
