@@ -8,9 +8,6 @@ You don't replace your APIs. You don't rip-and-rebuild for AI. You take stock of
 
 [**Naftiko Shipyard**](https://shipyard.naftiko.io) is the documentation hub and public front door for the entire Naftiko Fleet. It lands new readers on the **Spec-Driven Integration (SDI)** thesis, walks you through the six components of the Fleet, and routes you into the right tutorial track depending on the pain that brought you in.
 
-- **[shipyard.naftiko.io](https://shipyard.naftiko.io)** — documentation, tutorials, editions
-- **Coming before Beta 1 (end of June 2026):** a hosted **Playground** to run capabilities against a live Ikanos engine without installing anything, and an AI-assisted **Ask Navi** search across the whole docs corpus.
-
 ## The Problem
 
 - APIs are everywhere, but not always being used
