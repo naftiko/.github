@@ -1,8 +1,16 @@
 # Naftiko
 
-**Naftiko turns your existing data & APIs into a governed capability fabric for context engineering and agent orchestration.**
+**Naftiko turns your existing data and APIs into a governed capability Fleet you can command for context engineering and agent orchestration.**
 
-You don't replace APIs. You don't rip-and-rebuild for AI. You take stock of what already exists, organize it, and make it usable by humans *and* machines across business domains in repeatable ways.
+You don't replace your APIs. You don't rip-and-rebuild for AI. You take stock of what already exists, organize it into capabilities, and make it usable by humans *and* machines across every domain in your business.
+
+## Start Here — Land in the Shipyard
+
+[**Naftiko Shipyard**](https://shipyard.naftiko.io) is the documentation hub and public front door for the entire Naftiko Fleet. It lands new readers on the **Spec-Driven Integration (SDI)** thesis, walks you through the six components of the Fleet, and routes you into the right tutorial track depending on the pain that brought you in.
+
+- **[shipyard.naftiko.io](https://shipyard.naftiko.io)** — documentation, tutorials, editions
+- **[github.com/naftiko/shipyard](https://github.com/naftiko/shipyard)** — the public Shipyard monorepo
+- **Coming before Beta 1 (end of June 2026):** a hosted **Playground** to run capabilities against a live Ikanos engine without installing anything, and an AI-assisted **Ask Navi** search across the whole docs corpus.
 
 ## The Problem
 
@@ -13,56 +21,89 @@ You don't replace APIs. You don't rip-and-rebuild for AI. You take stock of what
 - Agent Skills seem like the solution, without fully knowing why
 - Leadership mandates AI, teams are absorbing the risk
 
-## What Naftiko Does
+## The Naftiko Fleet — Six Named Components, All at v1.0.0-alpha3
 
-- APIs, data, and tools grouped as **capabilities** — the right-sized unit of reuse for spec-driven integration
-- Capabilities are declared using YAML, configuring the Naftiko Engine provided as a Docker container
-- Converts data formats like Protocol Buffer, XML, YAML, CSV, and Avro into JSON for better context engineering
-- MCP servers and Agent Skills are standardized, discoverable, and governed
-- Agents operate within policy, cost, and trust boundaries
-- AI progress compounds instead of fragmenting
+| Component | Purpose | License |
+|---|---|---|
+| **[Shipyard](https://github.com/naftiko/shipyard)** | Documentation hub — soon a hosted Playground and AI-assisted Ask Navi search across the whole corpus | OSS docs |
+| **[Ikanos](https://github.com/naftiko/ikanos)** | The OSS capability engine — runs a Naftiko spec as a multi-protocol server | **Apache 2.0** |
+| **[Polychro](https://github.com/naftiko/polychro)** | The OSS deterministic AI-era linter for YAML, JSON, and Markdown specs | **Apache 2.0** |
+| **Crafter** | The capability builder for VS Code and most AI IDEs — visual + spec-driven authoring (the new Spectral for SDI) | Fleet edition |
+| **Warden** | Capability governance and policy enforcement for Backstage | Fleet edition |
+| **Skipper** | Fleet-wide orchestration for Kubernetes — teams, regions, compliance domains | Fleet edition |
 
-## Naftiko Framework
+**Ikanos and Polychro are committed to staying 100% Apache 2.0 in every edition of the Fleet.**
 
-[Naftiko Framework](https://github.com/naftiko/framework) is the first open-source project for Spec-Driven Integration. Developers only need to know YAML, JSONPath, and Mustache templates to define capabilities — no Java or other code required unless extending the framework itself.
+## Spec-Driven Integration (SDI)
+
+SDI is the methodology that ties Ikanos, Polychro, Crafter, Warden, and Skipper together. Every integration is a declarative specification first — authored once in YAML, validated by a deterministic linter, executed by a deterministic engine, governed by deterministic policy, and orchestrated across the Fleet. One spec, six tools, every protocol surface (REST + MCP + Skill) from the same definition.
+
+Developers only need to know **YAML**, **JSONPath**, and **Mustache** templates to define capabilities — no Java required unless extending the engine itself.
 
 | Feature | Description |
 |---|---|
-| Spec-Driven | Declare capabilities entirely in **YAML** — no Java required |
-| Multi-Protocol Servers | Expose capabilities via **MCP**, **SKILL**, or **REST** servers out of the box |
+| Spec-Driven | Declare capabilities entirely in **YAML** |
+| Multi-Protocol Servers | Expose capabilities via **MCP**, **Skill**, and **REST** from the same spec |
 | Data Format Conversion | Transform **Protobuf**, **XML**, **YAML**, **CSV**, and **Avro** payloads into JSON |
 | HTTP API Consumption | Connect to any HTTP-based API with built-in authentication support |
-| Templating & Querying | Use **Mustache** templates and **JSONPath** expressions for flexible data mapping |
-| AI Native | Designed for Context Engineering and Agent Orchestration |
-| Docker Native | Ships as a ready-to-run **Docker** container |
+| Templating & Querying | **Mustache** templates and **JSONPath** expressions for flexible data mapping |
+| AI Native | Built for context engineering and agent orchestration from the ground up |
+| Docker Native | Ships as ready-to-run **Docker** containers |
 | Extensible | Open-source core extensible with new protocols and adapters |
 
-Learn more in the [Naftiko Framework Wiki](https://github.com/naftiko/framework/wiki).
+## Four Tutorial Tracks Mapped to Four Buyer Pains
 
-## Naftiko Fleet
+Shipyard organizes its tutorials around the four pains the Fleet exists to solve:
 
-[Naftiko Fleet](https://github.com/naftiko/fleet) is the leading product for Spec-Driven Integration, available as a Community Edition with upcoming Standard and Enterprise editions.
+- **Track 1 — Context Engineering** *(published)* — Design for MCP, then wire the APIs.
+- **Track 2 — API Reusability** *(next)* — Turn old API investment into new experiences.
+- **Track 3 — Agent Orchestration** *(scoped)* — Deterministic flows over non-deterministic models.
+- **Track 4 — Platform Operations** *(scoped)* — Running the Fleet across teams and regions.
 
-- **Naftiko Framework** — The core open-source technology to create and run capabilities
-- **Naftiko Extension for VS Code** — A [Naftiko extension for VS Code](https://github.com/naftiko/fleet/wiki/Naftiko-Extension-for-VS-Code) to help you edit Naftiko files
-- **Naftiko Templates for Backstage** — [Backstage integrated templates](https://github.com/naftiko/fleet/wiki/Naftiko-Templates-for-Backstage) via Docker for creating new projects, services, or resources from pre-defined templates
+Each track answers one of the four pains: **API sprawl**, **AI agents drifting / hallucinating / breaking contracts**, **context fragmentation for AI tasks**, and **integration boilerplate**.
 
-Learn more in the [Naftiko Fleet Wiki](https://github.com/naftiko/fleet/wiki).
+## Three Layered Editions
+
+- **Community** — Free forever for personal and internal business use; ships every component; Ikanos and Polychro fully Apache 2.0.
+- **Standard** *(planned)* — Team-grade premium features for Shipyard, Crafter, Warden, and Skipper, under the Naftiko Commercial License.
+- **Enterprise** *(planned)* — Governance and scale features for regulated environments.
+
+The editions are **layered, not exclusive** — anything authored in Community runs unchanged in Standard or Enterprise. Capability YAML, rulesets, and policies are forward-compatible.
+
+## Naftiko Signals — The Open Intelligence Layer
+
+[**Naftiko Signals**](https://signals.naftiko.io) is the open intelligence platform that reads the public footprint of every enterprise — public job postings, press releases, newsroom content, and open-source activity — into a structured signal corpus that maps how the Fortune 1000 is investing across AI, APIs, cloud, integration, governance, and operations.
+
+## Roadmap
+
+- **Alpha 4 (mid-June 2026)** — MCP trust propagation, API-gateway integration (CORS, OpenTelemetry context propagation, mTLS, HTTP cache-control), first A2A server adapter with native Langchain4j integration.
+- **Beta 1 (end of June 2026)** — Stable MVP across the Fleet: interactive MCP Apps, server-side code-mode for MCP, client-SDK generation across TypeScript / Python / Java / Go, authorization via Open Policy Agent. Shipyard Playground and Ask Navi search land on the same train.
+- **General Availability (September 2026)** — Production-ready v1.0 across the Fleet; JSON Schema published to JSON Schema Store.
+
+The full plan is public: [Framework Roadmap](https://github.com/naftiko/framework/wiki/Roadmap) · [Fleet Roadmap](https://github.com/naftiko/fleet/wiki/Roadmap) — both updated weekly, cross-linked from Shipyard.
 
 ## Why Naftiko
 
-- **Maximize Existing Investments** — Your data and APIs are not technical debt, they are your strategic inventory
-- **Capabilities, Not Just Endpoints** — AI doesn't need endpoints, it needs capabilities that are spec-driven
-- **Governed AI Integration at Scale** — AI integration without governance doesn't scale and doesn't survive
-- **Meet Teams Where They Are** — Reusability shows up in IDEs, governance is seamless as guidance
+- **Maximize Existing Investments** — Your data and APIs are not technical debt, they are your strategic inventory.
+- **Capabilities, Not Just Endpoints** — AI doesn't need endpoints, it needs capabilities that are spec-driven.
+- **Governed AI Integration at Scale** — AI integration without governance does not scale and does not survive.
+- **Meet Teams Where They Are** — Reusability shows up in the IDE; governance is seamless guidance.
+- **Open by Default** — Ikanos and Polychro are Apache 2.0 in every edition. Signals is open data, versioned in Git.
 
 ## Get Involved
 
-- [Website](https://naftiko.io/)
-- [Blog](https://naftiko.io/resources)
-- [LinkedIn](https://www.linkedin.com/company/naftiko/)
-- [YouTube](https://www.youtube.com/@Naftiko)
-- [Bluesky](https://bsky.app/profile/naftiko.bsky.social)
-- [Discussions](https://github.com/orgs/naftiko/discussions)
-- [Newsletter](https://naftiko.io/newsletter)
-- [Contact Us](https://naftiko.io/contact-us)
+- **Website** — [naftiko.io](https://naftiko.io/)
+- **Shipyard (docs)** — [shipyard.naftiko.io](https://shipyard.naftiko.io)
+- **Blog** — [naftiko.io/blog](https://naftiko.io/blog/)
+- **Discussions** — [github.com/orgs/naftiko/discussions](https://github.com/orgs/naftiko/discussions)
+- **Newsletter** — [naftiko.io/newsletter](https://naftiko.io/newsletter)
+- **LinkedIn** — [linkedin.com/company/naftiko](https://www.linkedin.com/company/naftiko/)
+- **YouTube** — [youtube.com/@Naftiko](https://www.youtube.com/@Naftiko)
+- **Bluesky** — [bsky.app/profile/naftiko.bsky.social](https://bsky.app/profile/naftiko.bsky.social)
+- **Substack (Signals)** — [naftiko.substack.com](https://naftiko.substack.com/)
+- **Podcast (Apple)** — [Naftiko Capabilities](https://podcasts.apple.com/us/podcast/nafitko-capabilities/id1866740641)
+- **Podcast (Spotify)** — [open.spotify.com/show/595bB8JdW35Qv7Yn6JFmF4](https://open.spotify.com/show/595bB8JdW35Qv7Yn6JFmF4)
+- **Capabilities Org** — [github.com/naftiko-capabilities](https://github.com/naftiko-capabilities)
+- **Contact** — [naftiko.io/contact-us](https://naftiko.io/contact-us)
+
+Naftiko operates from Paris and New York City.
