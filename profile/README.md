@@ -21,7 +21,7 @@ You don't replace your APIs. You don't rip-and-rebuild for AI. You take stock of
 
 | Component | Purpose | License |
 |---|---|---|
-| **[Shipyard](https://github.com/naftiko/shipyard)** | Documentation hub — soon a hosted Playground and AI-assisted Ask Navi search across the whole corpus | OSS docs |
+| **[Shipyard](https://shipyard.naftiko.io)** | Documentation hub — soon a hosted Playground and AI-assisted Ask Navi search across the whole corpus | Docs hub |
 | **[Ikanos](https://github.com/naftiko/ikanos)** | The OSS capability engine — runs a Naftiko spec as a multi-protocol server | **Apache 2.0** |
 | **[Polychro](https://github.com/naftiko/polychro)** | The OSS deterministic AI-era linter for YAML, JSON, and Markdown specs | **Apache 2.0** |
 | **[Crafter](https://shipyard.naftiko.io/docs/1.0.0-alpha3/fleet/crafter/)** | The capability builder for VS Code and most AI IDEs — visual + spec-driven authoring (the new Spectral for SDI) | Fleet edition |
