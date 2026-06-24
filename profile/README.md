@@ -1,10 +1,10 @@
+## Naftiko's Overview
+
 **Naftiko turns your existing data and APIs into a declarative capabilities exposing MCP, Agent Skills and REST servers.**
 
 You don't replace your APIs. You don't rip-and-rebuild for AI. You take stock of what already exists, organize it into capabilities, and make it usable by humans *and* machines across every domain in your business.
 
-## Start Here
-
-[**Naftiko's documentation hub**](https://shipyard.naftiko.io) is the developer front door for Naftiko. It explains the **Spec-Driven Integration (SDI)** approach, gets you started with zero installation, routes you into the right tutorial track depending on your use case.
+Our [**documentation hub**](https://shipyard.naftiko.io) is the developer front door: it explains the **Spec-Driven Integration (SDI)** approach, gets you started with zero installation, routes you into the right tutorial track depending on your use case.
 
 ## The Problem
 
