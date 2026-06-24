@@ -1,6 +1,4 @@
-# Naftiko
-
-**Naftiko turns your existing data and APIs into a declarative capabilities exposing MCP, Agent Skills and REST.**
+**Naftiko turns your existing data and APIs into a declarative capabilities exposing MCP, Agent Skills and REST servers.**
 
 You don't replace your APIs. You don't rip-and-rebuild for AI. You take stock of what already exists, organize it into capabilities, and make it usable by humans *and* machines across every domain in your business.
 
