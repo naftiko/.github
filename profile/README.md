@@ -15,7 +15,7 @@ Our [**documentation hub**](https://shipyard.naftiko.io) is the developer front 
 - Agent Skills seem like the solution, without fully knowing why
 - Leadership mandates AI, teams are absorbing the risk
 
-## Spec-Driven Integration (SDI)
+## Our Solution
 
 SDI is the methodology at the core of Naftiko. Every integration is a declarative specification first — authored once in YAML, validated by a deterministic linter, executed by a deterministic engine, governed by deterministic policy, and orchestrated across the Fleet. One spec, six tools, every protocol surface (MCP + Skill + REST) from the same definition.
 
@@ -49,15 +49,5 @@ Each track answers one of the four pains: **API sprawl**, **AI agents drifting /
 - **Governed AI Integration at Scale** — AI integration without governance does not scale and does not survive.
 - **Meet Teams Where They Are** — Reusability shows up in the IDE; governance is seamless guidance.
 - **Open by Default** — Ikanos and Polychro are Apache 2.0 in every edition. Signals is open data, versioned in Git.
-
-## Get Involved
-
-- **Website** — [naftiko.io](https://naftiko.io/)
-- **Blog** — [naftiko.io/blog](https://naftiko.io/blog/)
-- **Discussions** — [github.com/orgs/naftiko/discussions](https://github.com/orgs/naftiko/discussions)
-- **Newsletter** — [naftiko.io/newsletter](https://naftiko.io/newsletter)
-- **LinkedIn** — [linkedin.com/company/naftiko](https://www.linkedin.com/company/naftiko/)
-- **YouTube** — [youtube.com/@Naftiko](https://www.youtube.com/@Naftiko)
-- **Contact** — [naftiko.io/contact-us](https://naftiko.io/contact-us)
 
 Naftiko operates from Paris and Philadelphia.
