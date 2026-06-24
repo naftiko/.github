@@ -1,4 +1,4 @@
-## Naftiko's Overview
+## Overview
 
 **Naftiko turns your existing data and APIs into a declarative capabilities exposing MCP, Agent Skills and REST servers.**
 
@@ -32,9 +32,9 @@ Developers only need to know **YAML**, **JSONPath**, and **Mustache** templates 
 | Docker Native | Ships as ready-to-run **Docker** containers |
 | Extensible | Open-source core extensible with new protocols and adapters |
 
-## Four Tutorial Tracks Mapped to Four Buyer Pains
+## Three Tutorial Tracks
 
-Shipyard organizes its tutorials around the four pains the Fleet exists to solve:
+Our [**documentation hub**](https://shipyard.naftiko.io) organizes its tutorials around the four pains the Fleet exists to solve:
 
 - **Track 1 — Context Engineering** — Design for MCP, then wire the APIs.
 - **Track 2 — API Reusability** — Turn old API investment into new experiences.
