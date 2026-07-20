@@ -1,0 +1,13 @@
+# Default CODEOWNERS for Naftiko's org.
+#
+# This file lives in the Naftiko's `.github` repo, which GitHub treats as an
+# org-wide fallback: any repo that does NOT have its own CODEOWNERS file
+# (at repo root, /docs, or /.github) will inherit this one automatically.
+# A repo can override this at any time by adding its own CODEOWNERS.
+#
+# Syntax notes:
+# - Order matters: later rules override earlier ones for matching paths.
+# - Path patterns follow .gitignore-style matching.
+
+# Default owner for everything in the repo
+* @naftiko/engineering
