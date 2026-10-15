@@ -1,0 +1,14 @@
+{
+  "name": "Quality Gate",
+  "description": "Quality Gate workflow ready to use. Recommended starting point for any new codebase.",
+  "iconName": "quality-gate",
+  
+  "categories": [
+    "Code quality",
+    "Continuous Integration",
+    "Testing"
+  ],
+  "filePatterns": [
+    "\\.github/quality-gate-enabled$"
+  ]
+}
