@@ -67,7 +67,8 @@ Imperative approaches decide at runtime — in an optimizer, a retrieval index, 
 Developers need **YAML**, **JSONPath**, and **Mustache** — no Java required unless you're extending the engine itself. Sandboxed JavaScript, Python, and Groovy are there when a mapping needs more than a template.
 
 ```yaml
-ikanos: "1.0.0-beta5"
+# Set this to the version of your Ikanos release: https://github.com/naftiko/ikanos/releases
+ikanos: "1.0.0-beta9"
 
 info:
   display: Hello Shipyard
@@ -78,6 +79,7 @@ capability:
     - type: mcp
       port: 3001
       namespace: hello-tools
+      description: Greeting tools
       tools:
         greet:
           description: "Greet a user by name"
@@ -85,19 +87,14 @@ capability:
             who:
               type: string
               required: true
+              description: "Name of the person to greet"
           outputParameters:
-            - name: message
+            message:
               type: string
               value: "Hello, {{who}}! Welcome to the Shipyard."
 ```
 
-### ⚡ From API to agent context in three steps
-
-```bash
-ikanos import openapi petstore.yaml   # skeleton capability from an API you already own
-polychro lint capability.yml          # deterministic validation, sub-100 ms, in-process
-ikanos run capability.yml             # MCP + Skill + REST from the same spec
-```
+To start from an API you already own, see [From API to agent context](#-from-api-to-agent-context) below.
 
 ## 🚢 Two open source engines, one platform, one spec
 
@@ -147,12 +144,48 @@ To work locally, pick a distribution and follow the [**installation guide**](htt
 | **Backstage Integration** | npm package on GitHub Packages, plus a software template. *Enterprise.* |
 | **Kubernetes Integration** | OCI Helm chart and a `Capability` CRD. *Enterprise.* |
 
-The CLI is the fastest way in — author, validate, and run without leaving the file:
+### ⚡ From API to agent context
+
+The CLI is the fastest way in. Import an API you already own, shape it into a capability, validate it, and serve it.
 
 ```bash
-ikanos import openapi petstore.yaml     # skeleton capability from an API you already own
-polychro lint capability.yml            # deterministic validation, sub-100 ms
-ikanos run capability.yml               # MCP + Skill + REST on one process
+ikanos import openapi petstore.yaml -n petstore   # writes petstore-consumes.yml, the consumes adapter for the API
+```
+
+`import` writes only the `consumes` side. Compose it into a capability that exposes the operations agents need, in `capability.yml`:
+
+```yaml
+ikanos: "1.0.0-beta9"
+
+info:
+  display: Pet Finder
+  description: Find pets in the store by status.
+
+capability:
+  consumes:
+    - import: petstore
+      from: ./petstore-consumes.yml
+  exposes:
+    - type: mcp
+      port: 3001
+      namespace: pet-tools
+      description: Pet store tools for agents
+      tools:
+        find-pets:
+          description: "Find pets in the store by status"
+          inputParameters:
+            status:
+              type: string
+              required: true
+              description: "Pet status: available, pending, or sold"
+          call: petstore.find-pets-by-status
+          with:
+            status: pet-tools.status
+```
+
+```bash
+ikanos validate capability.yml   # check the capability against the schema
+ikanos serve capability.yml      # serve it; add skill and rest entries under exposes for more surfaces
 ```
 
 ### 🎓 Four tutorial tracks
@@ -168,10 +201,10 @@ Every track builds on *Shipyard*, a fictional maritime company, and each one sta
 
 | Edition | What it adds | Status |
 |---|---|---|
-| **Community** | The full author → lint → run inner loop, self-hosted forever. Ikanos + Polychro under Apache 2.0, plus the free Crafter extension. | ✅ Free forever · available now |
+| **Community** | The full author → validate → serve inner loop, self-hosted forever. Ikanos + Polychro under Apache 2.0, plus the free Crafter extension. | ✅ Free forever · available now |
 | **Developer** | Managed hosting for prototypes and demos. Push a capability, get a live endpoint, pay only while it serves. | 🚧 In development |
 | **Team** | Managed hosting for production. Always-warm instances, higher throughput, backed by an SLA. | 🚧 In development |
-| **Enterprise** | Everything in Team, plus Warden and Skipper, dedicated tenancy, domain dashboards, and RBAC. | 🗓️ Design partners · H2 2026 |
+| **Enterprise** | Everything in Team, plus Warden and Skipper, dedicated tenancy, domain dashboards, and RBAC. | 🗓️ Design partners · coming soon |
 
 Licensing in short: **Ikanos and Polychro are Apache 2.0 in every edition.** Crafter and the docs hub ship under the Naftiko Freeware EULA. Warden, Skipper, and the hosted services are covered by the Naftiko Commercial License.
 
