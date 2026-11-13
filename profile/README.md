@@ -40,7 +40,7 @@ A capability is the artifact that makes the review possible. It is reviewable *b
 
 - **Only what is declared can happen.** The engine cannot improvise a call the spec does not contain. Declare the fields an operation returns, and undeclared fields never project; an operation with no declared output passes the upstream response through as is, so declare its output before binding a sensitive credential.
 - **The agent never holds the upstream credential.** `binds` keeps secrets on the engine side of the boundary — the credential that can write to production is never accessible to the model reasoning about what to do.
-- **Least privilege is written down.** The reachable operations, the returned fields, and the scope authorizing exactly those sit in one file, in Git, versioned and diffable.
+- **Least privilege is written down.** The reachable operations and the returned fields sit in one file, in Git, versioned and diffable. That file is the boundary to scope the bound credential to: the engine does not narrow a token, so give it no more than those operations need.
 - **You approve what *could* happen.** Any approach lets you audit what already did. A declaration is the only one you can sign off in advance.
 - **Telemetry when it runs.** OpenTelemetry traces and per-capability Prometheus metrics, attributable per operation.
 
@@ -54,11 +54,11 @@ A capability is the artifact that makes the review possible. It is reviewable *b
 | **MCP servers** | Hand-write one (FastMCP, Spring AI) | Emit MCP from the same spec |
 | **Endpoint mirrors** | Generate a 1:1 200-tool dump | Shape one domain capability |
 | **Composition** | One generic server per provider, bolted together | Compose source capabilities into an applied one |
-| **Approval** | Nobody can say what the agent can reach | The reachable operations, returned fields, and credential scope are in a file security can read first |
+| **Approval** | Nobody can say what the agent can reach | The reachable operations and returned fields, which the credential is scoped to, are in a file security can read first |
 
 > **Everyone else shrinks the context. We make most of it unnecessary.**
 
-Imperative approaches decide at runtime — in an optimizer, a retrieval index, a generated program — and leave no artifact behind. A declaration decides once, in a file: the tools the agent sees, the fields that come back, and the credential authorizing exactly those. The agent may well have drafted that file. What matters is that a human saw it in between.
+Imperative approaches decide at runtime — in an optimizer, a retrieval index, a generated program — and leave no artifact behind. A declaration decides once, in a file: the tools the agent sees and the fields that come back, which the credential is then scoped to. The agent may well have drafted that file. What matters is that a human saw it in between.
 
 ## 📜 Spec-Driven Integration
 
@@ -102,7 +102,7 @@ Two Apache 2.0 engines do the work. Three components carry the same reviewed spe
 
 | Repository | What it is | Availability |
 |---|---|---|
-| [**ikanos**](https://github.com/naftiko/ikanos) | **Capability Engine** — serves a Naftiko spec as MCP, Skill, and REST from a single deployment, plus a Control port for ops. | **Apache 2.0** |
+| [**ikanos**](https://github.com/naftiko/ikanos) | **Capability Engine** — serves a Naftiko spec as MCP (Agent Skills included) and REST from a single deployment, plus a Control port for ops. | **Apache 2.0** |
 | [**polychro**](https://github.com/naftiko/polychro) | **Capability Linter** — deterministic AI-era validation for capability YAML and for YAML, JSON, XML, Markdown, and HTML specs. The new Spectral for SDI. | **Apache 2.0** |
 | [**fleet**](https://github.com/naftiko/fleet) | The three components that carry a reviewed spec onto the IDE, the portal, and the cluster. | Freeware EULA · Commercial |
 
