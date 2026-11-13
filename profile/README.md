@@ -38,7 +38,7 @@ Demos are easy. The gap between a working prototype and an agent allowed near a 
 
 A capability is the artifact that makes the review possible. It is reviewable *before* it runs, and before a credential is bound to it.
 
-- **Only what is declared can happen.** Undeclared fields cannot leak because they never project. The engine cannot improvise a call the spec does not contain.
+- **Only what is declared can happen.** The engine cannot improvise a call the spec does not contain. Declare the fields an operation returns, and undeclared fields never project; an operation with no declared output passes the upstream response through as is, so declare its output before binding a sensitive credential.
 - **The agent never holds the upstream credential.** `binds` keeps secrets on the engine side of the boundary — the credential that can write to production is never accessible to the model reasoning about what to do.
 - **Least privilege is written down.** The reachable operations, the returned fields, and the scope authorizing exactly those sit in one file, in Git, versioned and diffable.
 - **You approve what *could* happen.** Any approach lets you audit what already did. A declaration is the only one you can sign off in advance.
@@ -185,7 +185,7 @@ capability:
 
 ```bash
 ikanos validate capability.yml   # check the capability against the schema
-ikanos serve capability.yml      # serve it; add skill and rest entries under exposes for more surfaces
+ikanos serve capability.yml      # serve it; add skills to the MCP adapter, or a rest entry under exposes, for more surfaces
 ```
 
 ### 🎓 Four tutorial tracks
