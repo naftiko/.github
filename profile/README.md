@@ -104,7 +104,7 @@ Two Apache 2.0 engines do the work. Three components carry the same reviewed spe
 |---|---|---|
 | [**ikanos**](https://github.com/naftiko/ikanos) | **Capability Engine** — serves a Naftiko spec as MCP (Agent Skills included) and REST from a single deployment, plus a Control port for ops. | **Apache 2.0** |
 | [**polychro**](https://github.com/naftiko/polychro) | **Capability Linter** — deterministic AI-era validation for capability YAML and for YAML, JSON, XML, Markdown, and HTML specs. The new Spectral for SDI. | **Apache 2.0** |
-| [**fleet**](https://github.com/naftiko/fleet) | The three components that carry a reviewed spec onto the IDE, the portal, and the cluster. | Freeware EULA · Commercial |
+| [**fleet**](https://github.com/naftiko/fleet) | The three components that carry a reviewed spec onto the IDE, the portal, and the cluster. | Naftiko EULA · free for testing |
 
 The Fleet is three independently usable components, not one binary. Adopt any of them on its own; none requires the others, and all three rely on the two Apache 2.0 engines underneath.
 
@@ -206,7 +206,7 @@ Every track builds on *Shipyard*, a fictional maritime company, and each one sta
 | **Team** | Managed hosting for production. Always-warm instances, higher throughput, backed by an SLA. | 🚧 In development |
 | **Enterprise** | Everything in Team, plus Warden and Skipper, dedicated tenancy, domain dashboards, and RBAC. | 🗓️ Design partners · coming soon |
 
-Licensing in short: **Ikanos and Polychro are Apache 2.0 in every edition.** Crafter and the docs hub ship under the Naftiko Freeware EULA. Warden, Skipper, and the hosted services are covered by the Naftiko Commercial License.
+Licensing in short: **Ikanos and Polychro are Apache 2.0 in every edition.** Fleet — Crafter, Warden, and Skipper — ships under the Naftiko EULA: free for testing, all rights reserved. The docs hub ships under the Naftiko EULA, and the hosted services are covered by the Naftiko Commercial License.
 
 ## 💡 Why Naftiko
 
