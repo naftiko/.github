@@ -1,0 +1,19 @@
+name: Test deploy-badges action
+
+on:
+  pull_request:
+    paths:
+      - ".github/actions/deploy-badges/**"
+      - ".github/workflows/test-deploy-badges.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    name: Unit tests (offline)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - run: bash .github/actions/deploy-badges/tests/run-tests.sh

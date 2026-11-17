@@ -1,0 +1,23 @@
+name: Naftiko badges deploy
+description: >-
+  Push badge JSON files to the badges branch of the calling repository, retrying
+  when a concurrent run pushed first.
+
+inputs:
+  source-dir:
+    description: "Directory holding the badge files, relative to the workspace root."
+    default: "badges-output"
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      with:
+        ref: badges
+        path: .badges-branch
+
+    - shell: bash
+      env:
+        SOURCE_DIR: ${{ inputs.source-dir }}
+        BRANCH_DIR: .badges-branch
+      run: bash "${{ github.action_path }}/scripts/deploy.sh"
