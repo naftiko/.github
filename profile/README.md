@@ -1,53 +1,224 @@
-## Overview
+<div align="center">
 
-**Naftiko turns your existing data and APIs into a declarative capabilities exposing MCP, Agent Skills and REST servers.**
+# ⚓ Naftiko
 
-You don't replace your APIs. You don't rip-and-rebuild for AI. You take stock of what already exists, organize it into capabilities, and make it usable by humans *and* machines across every domain in your business.
+### The Agentic Integration Platform
 
-Our [**documentation hub**](https://shipyard.naftiko.io) is the developer front door: it explains the **Spec-Driven Integration (SDI)** approach, gets you started with zero installation, routes you into the right tutorial track depending on your use case.
+**Declare your Agent Capability**. Stop hand-writing MCP servers and API integration glue. Give security a YAML spec to review *before* credentials are attached, and operations a Docker container to run.
 
-## The Problem
+[**Documentation**](https://shipyard.naftiko.io) · [**Playground**](https://shipyard.naftiko.io/playground) · [**Website**](https://naftiko.io)
 
-- APIs are everywhere, but not always being used
-- Specs exist, but no shared meaning
-- MCP servers popping up in ad hoc ways
-- Copilots and agents lack the context they need
-- Agent Skills seem like the solution, without fully knowing why
-- Leadership mandates AI, teams are absorbing the risk
+</div>
 
-## Our Solution
+---
 
-SDI is the methodology at the core of Naftiko. Every integration is a declarative specification first — authored once in YAML, validated by a deterministic linter, executed by a deterministic engine, governed by deterministic policy, and orchestrated across the Fleet. One spec, six tools, every protocol surface (MCP + Skill + REST) from the same definition.
+## 🧭 What Naftiko does
 
-Developers only need to know **YAML**, **JSONPath**, and **Mustache** templates to define capabilities — no Java required unless extending the engine itself.
+Naftiko integrates data and APIs you already use into agent capabilities you can trust.
 
-| Feature | Description |
+You don't replace your APIs. You don't rip-and-rebuild for AI. You take stock of what already exists, organize it into **capabilities**, and serve those capabilities as **MCP**, **Agent Skills**, and **REST** — from one declarative spec.
+
+A capability is not an endpoint mirror. It is a coarse-grained, task-shaped piece of a domain: it `consumes` the HTTP APIs you have, and `exposes` them on the surfaces agents actually use.
+
+## 🚧 What blocks agents from production
+
+Demos are easy. The gap between a working prototype and an agent allowed near a system of record is where most agentic programs stall — and it is rarely the model's fault.
+
+- 🛡️ **The security review** — nobody can say what an agent is able to reach *before* the credential is attached. So the review becomes weeks of argument instead of a read-through.
+- 💸 **Cost** — trust gets the headlines, but cost is what stops agentic programs reaching production. Every turn re-sends a tool catalog nobody curated.
+- 🕳️ **Over-broad credentials** — a token that can write to production hands the agent far more blast radius than the task needs.
+- 👻 **Shadow MCP** — servers stood up per team, per vendor, outside any review, widening the surface faster than anyone maps it.
+- 🌫️ **No shared meaning** — APIs and specs are everywhere, but nothing says which operations belong to a business capability, or who owns it.
+- 🧭 **No shape for the context** — copilots and agents either lack what they need or drown in a 200-tool catalog. Agent Skills look like the answer, without anyone being sure why.
+- ⚖️ **Misplaced risk** — leadership mandates AI; the teams absorb the consequences.
+
+**Governance is emerging as an enabler, not a blocker.** Teams with review frameworks and risk tiering move from pilot to production *faster*, because leadership has something to say yes to.
+
+## 🔐 Reaching business-critical systems safely
+
+A capability is the artifact that makes the review possible. It is reviewable *before* it runs, and before a credential is bound to it.
+
+- **Only what is declared can happen.** The engine cannot improvise a call the spec does not contain. Declare the fields an operation returns, and undeclared fields never project; an operation with no declared output passes the upstream response through as is, so declare its output before binding a sensitive credential.
+- **The agent never holds the upstream credential.** `binds` keeps secrets on the engine side of the boundary — the credential that can write to production is never accessible to the model reasoning about what to do.
+- **Least privilege is written down.** The reachable operations and the returned fields sit in one file, in Git, versioned and diffable. That file is the boundary to scope the bound credential to: the engine does not narrow a token, so give it no more than those operations need.
+- **You approve what *could* happen.** Any approach lets you audit what already did. A declaration is the only one you can sign off in advance.
+- **Telemetry when it runs.** OpenTelemetry traces and per-capability Prometheus metrics, attributable per operation.
+
+> Identity propagation — token forwarding, identity context, and policy evaluation on the original caller — is on the roadmap, not shipped today.
+
+## 🔀 The shift
+
+| | The usual approach | With Naftiko |
+|---|---|---|
+| **Integration glue** | Hand-write auth, pagination, retries | Declare a capability in YAML |
+| **MCP servers** | Hand-write one (FastMCP, Spring AI) | Emit MCP from the same spec |
+| **Endpoint mirrors** | Generate a 1:1 200-tool dump | Shape one domain capability |
+| **Composition** | One generic server per provider, bolted together | Compose source capabilities into an applied one |
+| **Approval** | Nobody can say what the agent can reach | The reachable operations and returned fields, which the credential is scoped to, are in a file security can read first |
+
+> **Everyone else shrinks the context. We make most of it unnecessary.**
+
+Imperative approaches decide at runtime — in an optimizer, a retrieval index, a generated program — and leave no artifact behind. A declaration decides once, in a file: the tools the agent sees and the fields that come back, which the credential is then scoped to. The agent may well have drafted that file. What matters is that a human saw it in between.
+
+## 📜 Spec-Driven Integration
+
+**SDI** is the method the platform runs on. One declarative YAML spec, authored once, validated deterministically, executed deterministically, and carried onto the surfaces your teams already use.
+
+Developers need **YAML**, **JSONPath**, and **Mustache** — no Java required unless you're extending the engine itself. Sandboxed JavaScript, Python, and Groovy are there when a mapping needs more than a template.
+
+```yaml
+# Set this to the version of your Ikanos release: https://github.com/naftiko/ikanos/releases
+ikanos: "1.0.0-beta9"
+
+info:
+  display: Hello Shipyard
+  description: A minimal MCP capability that greets you back.
+
+capability:
+  exposes:
+    - type: mcp
+      port: 3001
+      namespace: hello-tools
+      description: Greeting tools
+      tools:
+        greet:
+          description: "Greet a user by name"
+          inputParameters:
+            who:
+              type: string
+              required: true
+              description: "Name of the person to greet"
+          outputParameters:
+            message:
+              type: string
+              value: "Hello, {{who}}! Welcome to the Shipyard."
+```
+
+To start from an API you already own, see [From API to agent context](#-from-api-to-agent-context) below.
+
+## 🚢 Two open source engines, one platform, one spec
+
+Two Apache 2.0 engines do the work. Three components carry the same reviewed spec, with its governance intact, onto the IDE, the portal, and the cluster.
+
+| Repository | What it is | Availability |
+|---|---|---|
+| [**ikanos**](https://github.com/naftiko/ikanos) | **Capability Engine** — serves a Naftiko spec as MCP (Agent Skills included) and REST from a single deployment, plus a Control port for ops. | **Apache 2.0** |
+| [**polychro**](https://github.com/naftiko/polychro) | **Capability Linter** — deterministic AI-era validation for capability YAML and for YAML, JSON, XML, Markdown, and HTML specs. The new Spectral for SDI. | **Apache 2.0** |
+| [**fleet**](https://github.com/naftiko/fleet) | The three components that carry a reviewed spec onto the IDE, the portal, and the cluster. | Naftiko EULA · free for testing |
+
+The Fleet is three independently usable components, not one binary. Adopt any of them on its own; none requires the others, and all three rely on the two Apache 2.0 engines underneath.
+
+- **VS Code Extension** — schema-driven completion for capability YAML and live linting as you type, in VS Code, Cursor, Windsurf, and Zed. *Crafter · free in every edition.*
+- **Backstage Integration** — scaffold a capability from a software template, register it and its provided API in the catalog, and keep that API in sync from Git. *Warden · Enterprise.*
+- **Kubernetes Integration** — a `Capability` CRD reconciled into a running workload, with SHA-256 spec-drift detection, stop/restart, and Prometheus wiring. *Skipper · Enterprise.*
+
+> **Shipyard** is the Naftiko developer center — the documentation hub plus the hosted Playground, where you can run the tutorials in the browser with nothing installed. It backs every edition.
+
+### ✨ Four properties every capability gets
+
+- **Discoverable** — humans and agents can find what exists before rebuilding it.
+- **Policy-driven** — blocking and advisory rules at validation, in CI, and at Kubernetes admission.
+- **Composable** — right-sized units with clearer contracts, assembled into MCP servers, copilots, and agent workflows.
+- **Observable** — OpenTelemetry traces and per-capability Prometheus metrics, with cost attribution.
+
+## 🔌 One capability, many protocols
+
+A single spec is exposed simultaneously from one Ikanos deployment. The agent-facing surfaces come first, because the spec *is* the context.
+
+- 🤖 **MCP** — tools, resources, and prompts over streamable HTTP or stdio.
+- 📄 **Agent Skills** — downloadable skill folders with `SKILL.md` prompt integration.
+- 🌐 **REST** — clean endpoints with per-operation path, method, and parameter mapping.
+- 🛣️ **A2A** — Google's Agent-to-Agent protocol. *On the roadmap, not yet shipped.*
+
+## 🚀 Get started
+
+Nothing to install: run the tutorials in the [**Playground**](https://shipyard.naftiko.io/playground).
+
+To work locally, pick a distribution and follow the [**installation guide**](https://shipyard.naftiko.io/fleet/getting-started/installation/), then the [**quickstart**](https://shipyard.naftiko.io/fleet/getting-started/quickstart/).
+
+| What | How you get it |
 |---|---|
-| Spec-Driven | Declare capabilities entirely in **YAML** |
-| Multi-Protocol Servers | Expose capabilities via **MCP**, **Skill**, and **REST** from the same spec |
-| Data Format Conversion | Transform **Protobuf**, **XML**, **YAML**, **CSV**, and **Avro** payloads into JSON |
-| HTTP API Consumption | Connect to any HTTP-based API with built-in authentication support |
-| Templating & Querying | **Mustache** templates and **JSONPath** expressions for flexible data mapping |
-| AI Native | Built for context engineering and agent orchestration from the ground up |
-| Docker Native | Ships as ready-to-run **Docker** containers |
-| Extensible | Open-source core extensible with new protocols and adapters |
+| **Capability Engine** | Native CLI — single binary for Linux, macOS, and Windows, no JVM. Or the `ghcr.io/naftiko/ikanos` Docker image. |
+| **Capability Linter** | Native CLI — single binary for Linux, macOS, and Windows. Also an embeddable Java library, SDKs for Go, Node.js, and Python, an MCP server, and a GitHub Action with SARIF output. |
+| **VS Code Extension** | [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Naftiko-Inc.crafter) — also Cursor, Windsurf, and Zed. |
+| **Backstage Integration** | npm package on GitHub Packages, plus a software template. *Enterprise.* |
+| **Kubernetes Integration** | OCI Helm chart and a `Capability` CRD. *Enterprise.* |
 
-## Three Tutorial Tracks
+### ⚡ From API to agent context
 
-Our [**documentation hub**](https://shipyard.naftiko.io) organizes its tutorials around the four pains the Fleet exists to solve:
+The CLI is the fastest way in. Import an API you already own, shape it into a capability, validate it, and serve it.
 
-- **Track 1 — Context Engineering** — Design for MCP, then wire the APIs.
-- **Track 2 — API Reusability** — Turn old API investment into new experiences.
-- **Track 3 — API Orchestration** — Aggregating multiple source APIs in a domain-driven way.
+```bash
+ikanos import openapi petstore.yaml -n petstore   # writes petstore-consumes.yml, the consumes adapter for the API
+```
 
-Each track answers one of the four pains: **API sprawl**, **AI agents drifting / hallucinating / breaking contracts**, **context fragmentation for AI tasks**, and **integration boilerplate**.
+`import` writes only the `consumes` side. Compose it into a capability that exposes the operations agents need, in `capability.yml`:
 
-## Why Naftiko
+```yaml
+ikanos: "1.0.0-beta9"
 
-- **Maximize Existing Investments** — Your data and APIs are not technical debt, they are your strategic inventory.
-- **Capabilities, Not Just Endpoints** — AI doesn't need endpoints, it needs capabilities that are spec-driven.
-- **Governed AI Integration at Scale** — AI integration without governance does not scale and does not survive.
-- **Meet Teams Where They Are** — Reusability shows up in the IDE; governance is seamless guidance.
-- **Open by Default** — Ikanos and Polychro are Apache 2.0 in every edition. Signals is open data, versioned in Git.
+info:
+  display: Pet Finder
+  description: Find pets in the store by status.
+
+capability:
+  consumes:
+    - import: petstore
+      from: ./petstore-consumes.yml
+  exposes:
+    - type: mcp
+      port: 3001
+      namespace: pet-tools
+      description: Pet store tools for agents
+      tools:
+        find-pets:
+          description: "Find pets in the store by status"
+          inputParameters:
+            status:
+              type: string
+              required: true
+              description: "Pet status: available, pending, or sold"
+          call: petstore.find-pets-by-status
+          with:
+            status: pet-tools.status
+```
+
+```bash
+ikanos validate capability.yml   # check the capability against the schema
+ikanos serve capability.yml      # serve it; add skills to the MCP adapter, or a rest entry under exposes, for more surfaces
+```
+
+### 🎓 Four tutorial tracks
+
+Every track builds on *Shipyard*, a fictional maritime company, and each one stands alone.
+
+1. **Context Engineering** — go from mock to live MCP tools against a real Maritime Registry API. *(30–45 min)*
+2. **API Reusability** — Skill groups, aggregates with `ref:`, and a parallel REST adapter. One capability, three doors. *(30 min)*
+3. **API Orchestration** — a multi-source Fleet Manifest with orchestrated `steps`, `lookup` joins, and shared `consumes`. *(30 min)*
+4. **Platform Operations** — linting in CI, observability via the Control port, multi-environment binds. *(20 min)*
+
+## 📦 Editions
+
+| Edition | What it adds | Status |
+|---|---|---|
+| **Community** | The full author → validate → serve inner loop, self-hosted forever. Ikanos + Polychro under Apache 2.0, plus the free Crafter extension. | ✅ Free forever · available now |
+| **Developer** | Managed hosting for prototypes and demos. Push a capability, get a live endpoint, pay only while it serves. | 🚧 In development |
+| **Team** | Managed hosting for production. Always-warm instances, higher throughput, backed by an SLA. | 🚧 In development |
+| **Enterprise** | Everything in Team, plus Warden and Skipper, dedicated tenancy, domain dashboards, and RBAC. | 🗓️ Design partners · coming soon |
+
+Licensing in short: **Ikanos and Polychro are Apache 2.0 in every edition.** Fleet — Crafter, Warden, and Skipper — ships under the Naftiko EULA: free for testing, all rights reserved. The docs hub ships under the Naftiko EULA, and the hosted services are covered by the Naftiko Commercial License.
+
+## 💡 Why Naftiko
+
+- **Maximize existing investments** — your data and APIs are not technical debt, they are your strategic inventory.
+- **Capabilities, not just endpoints** — AI doesn't need endpoints, it needs capabilities that are spec-driven.
+- **Approved before it runs** — you can audit what happened with any approach; only a declaration lets you approve what *could* happen, before the credential is attached.
+- **Meet teams where they are** — reuse shows up in the IDE and the copilot workflow, not in a catalog nobody opens.
+- **Keep your runtime** — replace the hand-written glue. When the MCP transport revises, it's an engine bump; the capability spec is unchanged.
+- **Open by default** — the engines are Apache 2.0.
+
+## 📣 Status and community
+
+Naftiko is in beta; the specification is getting stable, and we say so in the [release notes](https://shipyard.naftiko.io/fleet/releases/) and on the [roadmap](https://shipyard.naftiko.io/fleet/roadmap/).
 
 Naftiko operates from Paris and Philadelphia.
